@@ -25,10 +25,10 @@ namespace xUnitTodoList.Tests.Controllers
 
             //Assert
             //確認結果不為null
-            Assert.NotNull(results);
+            Should.BeNotNull(results);
 
             //確認結果數量等於5
-            Assert.Equal(5, results.Count());
+            Should.HaveCountOf(results, 5);
         }
         [Theory]
         [InlineData("Cool", "Cool")]
@@ -45,8 +45,8 @@ namespace xUnitTodoList.Tests.Controllers
 
             //Assert
             //確認結果不為null
-            Assert.NotNull(results);
-            Assert.Equal(expectedSummary, results.Summary);
+            Should.BeNotNull(results);
+            Should.BeEqualTo(results?.Summary, expectedSummary);
         }
 
         [Fact]
@@ -61,7 +61,7 @@ namespace xUnitTodoList.Tests.Controllers
 
             //Assert
             //確認結果為null
-            Assert.Null(results);
+            Should.BeNull(results);
         }
     }
 }
