@@ -14,7 +14,7 @@ namespace xUnitTodoList.Tests
             //Act
             var actual = Calculator.Add(num1, num2);
             //Assert
-            Should.BeEqualTo(actual,expected);
+            Should.BeEqualTo(actual, expected);
         }
 
         [Theory]
@@ -24,7 +24,7 @@ namespace xUnitTodoList.Tests
         public void Subtraction_(int num1, int num2, int expected)
         {
             var actual = Calculator.Subtraction(num1, num2);
-            Should.BeEqualTo(actual,expected);
+            Should.BeEqualTo(actual, expected);
         }
 
         [Theory]
@@ -34,7 +34,7 @@ namespace xUnitTodoList.Tests
         public void Multiplication_(int num1, int num2, int expected)
         {
             var actual = Calculator.Multiplication(num1, num2);
-            Should.BeEqualTo(actual,expected);
+            Should.BeEqualTo(actual, expected);
         }
 
         [Theory]
@@ -44,7 +44,7 @@ namespace xUnitTodoList.Tests
         public void Division_(int num1, int num2, int expected)
         {
             var actual = Calculator.Division(num1, num2);
-            Should.BeEqualTo(actual,expected);
+            Should.BeEqualTo(actual, expected);
         }
 
     }
