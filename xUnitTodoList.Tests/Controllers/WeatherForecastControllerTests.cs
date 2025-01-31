@@ -63,5 +63,31 @@ namespace xUnitTodoList.Tests.Controllers
             //確認結果為null
             Should.BeNull(results);
         }
+
+        [Theory]
+        [InlineData("Cool", "Cool")]
+        [InlineData("Scorching", "Scorching")]
+        [InlineData("Hot", "Hot")]
+        public async Task GetByName_ShouldReturnCorrectSummary_AfterHighConcurrencyTest(string name, string expectedSummary)
+        {
+            //Arrange
+            var controller = CreateController();
+
+            // 模擬高併發，並行發送 1000 次請求
+            var tasks = Enumerable.Range(0, 1000)
+                .Select(_ => Task.Run(() => controller.GetByName(name)))
+                .ToArray();
+
+            //Act
+            var results = await Task.WhenAll(tasks);
+
+            //Assert
+            // 確保每個結果都不為 null 且結果與預期一致
+            foreach (var result in results)
+            {
+                Should.BeNotNull(result);
+                Should.BeEqualTo(result?.Summary, expectedSummary);
+            }
+        }
     }
 }
